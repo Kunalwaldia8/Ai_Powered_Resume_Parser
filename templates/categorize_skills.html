@@ -1,0 +1,32 @@
+<form method="post" action="{{ url_for('categorize_skills') }}">
+  <input type="hidden" name="session_id" value="{{ session_id }}" />
+  <input type="hidden" name="resume_folder" value="{{ resume_folder }}" />
+  <input type="hidden" name="jd_folder" value="{{ jd_folder }}" />
+  <h2>Categorize Job Description Skills</h2>
+  <table>
+    <tr>
+      <th>Skill</th>
+      <th>Category</th>
+    </tr>
+    {% for skill in jd_skills %}
+    <tr>
+      <td>{{ skill }}</td>
+      <td>
+        <select class="category-dropdown" name="category_{{ loop.index0 }}">
+          <option value="">-- Select Category --</option>
+          <option value="required">Required</option>
+          <option value="essential">Essential</option>
+          <option value="good_to_have">Good to Have</option>
+        </select>
+        <input
+          type="hidden"
+          name="skill_{{ loop.index0 }}"
+          value="{{ skill }}"
+        />
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  <input type="hidden" name="num_skills" value="{{ jd_skills|length }}" />
+  <button type="submit">Rank Resumes</button>
+</form>

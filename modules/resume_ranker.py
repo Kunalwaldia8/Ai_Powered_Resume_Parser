@@ -38,6 +38,51 @@ def calculate_semantic_similarity(resume_text, job_description_text):
     except Exception as e:
         print(f"Error calculating similarity: {e}")
         return 0.0
+def rank_resumes_weighted(resumes_data, job_description_text, skill_categories, category_weights):
+    ranked_resumes = []
+    all_jd_skills = []
+    for cat in skill_categories:
+        all_jd_skills.extend(skill_categories[cat])
+
+    total_weight = sum(len(skill_categories[cat]) * category_weights[cat] for cat in skill_categories if skill_categories[cat])
+
+    for resume_path, resume_data in resumes_data.items():
+        score = 0
+        matched_skills = []
+        for cat, skills in skill_categories.items():
+            for skill in skills:
+                if skill.lower() in [s.lower() for s in resume_data["skills"]]:
+                    score += category_weights[cat]
+                    matched_skills.append(skill)
+        final_score = (score / total_weight) * 100 if total_weight else 0
+
+        # Other fields as before
+        resume_name = resume_data["filename"]
+        resume_skills_lower = [skill.lower() for skill in resume_data["skills"]]
+        all_jd_skills_lower = [skill.lower() for skill in all_jd_skills]
+        missing_skills = list(set(all_jd_skills_lower) - set(resume_skills_lower))
+        ranked_resumes.append({
+            "resume_name": resume_name,
+            "candidate_name": resume_data["name"],
+            "skills": resume_data["skills"],
+            "matching_skills": matched_skills,
+            "missing_skills": missing_skills,
+            "final_score": final_score,
+            "resume_path": resume_path,
+            "contact": {
+                "email": resume_data["email"],
+                "phone": resume_data["phone"],
+                "github": resume_data["github"],
+                "linkedin": resume_data["linkedin"]
+            },
+            "education": resume_data["education"],
+            "projects": resume_data.get("projects", [])
+        })
+
+    ranked_resumes.sort(key=lambda x: x["final_score"], reverse=True)
+    for i, resume in enumerate(ranked_resumes):
+        resume["rank"] = i + 1
+    return ranked_resumes
 
 def rank_resumes(resumes_data, job_description_text, job_skills):
     """Rank resumes based on their match with the job description."""

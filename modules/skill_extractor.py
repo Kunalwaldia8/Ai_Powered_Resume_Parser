@@ -46,7 +46,7 @@ def extract_skills_from_text(text):
             found_skills.add(skill)
     
     # Return sorted by first occurrence in text
-    return sorted(found_skills, key=lambda x: text.index(x))
+    return sorted(found_skills, key=lambda x: text.find(x) if text.find(x) != -1 else 1e9)
 
 # Test with your sample
 if __name__ == "__main__":
