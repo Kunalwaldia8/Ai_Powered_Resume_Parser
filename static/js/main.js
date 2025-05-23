@@ -55,11 +55,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       })
       .catch((error) => {
-        console.error("Error:", error);
         errorMessage.textContent = "An error occurred. Please try again.";
         errorMessage.classList.remove("hidden");
         loading.classList.add("hidden");
         submitBtn.disabled = false;
+        // Show server response if possible
+        if (error && error.message) {
+          console.error("Fetch error message:", error.message);
+        }
       });
   });
 
