@@ -10,6 +10,8 @@ azure
 gcp
 docker
 kubernetes
+opps
+object oriented programming
 react
 angular
 vue
@@ -24,7 +26,7 @@ pytorch
 scikit-learn
 pandas
 numpy
-r
+machine learning
 tableau
 power bi
 excel

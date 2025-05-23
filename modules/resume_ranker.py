@@ -52,7 +52,7 @@ def rank_resumes(resumes_data, job_description_text, job_skills):
         semantic_score = calculate_semantic_similarity(resume_data["full_text"], job_description_text)
         
         # Calculate final score (weighted average)
-        final_score = (skill_match * 0.5) + (semantic_score * 0.5)
+        final_score = (skill_match * 0.8) + (semantic_score * 0.2)
         
         # Get resume file name without path
         resume_name = resume_data["filename"]
