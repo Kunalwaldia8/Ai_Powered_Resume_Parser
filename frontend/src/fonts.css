@@ -1,0 +1,23 @@
+/* Eina01 - Regular */
+@font-face {
+  font-family: "Eina01";
+  src: url("../public/fonts/Eina01-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Eina01 - Bold */
+@font-face {
+  font-family: "Eina01";
+  src: url("../public/fonts/Eina01-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Inter - Regular */
+@font-face {
+  font-family: "Inter";
+  src: url("../public/fonts/Inter-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}

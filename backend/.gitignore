@@ -1,0 +1,10 @@
+__pycache__
+node_modules/
+test/
+tests/
+**/test/
+**/tests/
+*.test.*
+/public/uploads/
+/uploads
+uploads/
