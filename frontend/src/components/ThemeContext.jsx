@@ -5,10 +5,10 @@ const ThemeContext = createContext();
 
 // Theme Provider Component
 const ThemeProvider = ({ children }) => {
-  // Initialize theme from localStorage or default to "light"
+  // Initialize theme from localStorage or default to "dark"
   const [theme, setTheme] = useState(() => {
     const savedTheme = localStorage.getItem("theme");
-    return savedTheme || "light";
+    return savedTheme || "dark";
   });
 
   // Toggle between light and dark themes

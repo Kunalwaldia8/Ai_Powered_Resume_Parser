@@ -49,21 +49,21 @@ const ResumeUpload = () => {
       >
         {/* Glowing Circles */}
         <div
-          className={`absolute sm:top-[390px] md:top-[90px] sm:left-[30px] md:left-[450px] lg:left-[750px] sm:w-[450px] sm:h-[450px] md:w-[500px] md:h-[500px] rounded-full opacity-20 filter blur-2xl z-0 transition-colors duration-300 ${
+          className={`absolute top-[460px] md:top-[90px] sm:left-[30px] md:left-[450px] lg:left-[750px] w-[450px] h-[450px] sm:w-[450px] sm:h-[450px] md:w-[500px] md:h-[500px] rounded-full opacity-20 filter blur-2xl z-0 transition-colors duration-300 ${
             theme === "light"
               ? "bg-gradient-to-r from-cyan-500 to-indigo-400"
               : "bg-gradient-to-r from-cyan-700 to-indigo-600"
           }`}
         ></div>
         <div
-          className={`absolute sm:top-[390px] md:top-[90px] sm:left-[100px] md:left-[600px] lg:left-[900px] sm:w-[450px] sm:h-[450px] md:w-[500px] md:h-[500px] rounded-full opacity-30 filter blur-3xl z-0 transition-colors duration-300 ${
+          className={`absolute top-[460px] md:top-[90px] sm:left-[100px] md:left-[600px] lg:left-[900px] w-[450px] h-[450px] sm:w-[450px] sm:h-[450px] md:w-[500px] md:h-[500px] rounded-full opacity-30 filter blur-3xl z-0 transition-colors duration-300 ${
             theme === "light"
               ? "bg-gradient-to-r from-indigo-600 to-purple-500"
               : "bg-gradient-to-r from-indigo-800 to-purple-700"
           }`}
         ></div>
         <div
-          className={`absolute sm:top-[390px] md:top-[90px] sm:left-[150px] md:left-[650px] lg:left-[1000px] sm:w-[450px] sm:h-[450px] md:w-[500px] md:h-[500px] rounded-full opacity-20 filter blur-2xl z-0 transition-colors duration-300 ${
+          className={`absolute top-[460px] md:top-[90px] sm:left-[150px] md:left-[650px] lg:left-[1000px] w-[450px] h-[450px] sm:w-[450px] sm:h-[450px] md:w-[500px] md:h-[500px] rounded-full opacity-20 filter blur-2xl z-0 transition-colors duration-300 ${
             theme === "light"
               ? "bg-gradient-to-r from-purple-500 to-pink-400"
               : "bg-gradient-to-r from-purple-700 to-pink-600"
