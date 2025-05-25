@@ -1,46 +1,63 @@
-# Resume Ranking System
+# Resume Ranking System - Backend
 
-A Flask-based web application that analyzes and ranks resumes against job descriptions using Natural Language Processing (NLP) and machine learning techniques.
+A Flask-based RESTful API that powers the Resume Ranking System, providing intelligent resume analysis and ranking capabilities using Natural Language Processing (NLP) techniques.
 
 ## Features
 
-- **Multi-format Support**:
-  - Resumes: PDF, DOCX
-  - Job Descriptions: PDF, DOCX, TXT
-- **Advanced Analysis**:
-  - Automated skill extraction
-  - Skills matching against job requirements
-  - Semantic similarity analysis
-  - Weighted scoring system
-- **User-Friendly Interface**:
-  - Web-based upload interface
-  - Interactive results viewing
-  - Downloadable HTML reports
-- **Security Features**:
-  - File type validation
-  - Session-based processing
-  - Directory traversal prevention
-  - File size limits (16MB)
+- **Intelligent Resume Processing**:
 
-## Prerequisites
+  - Smart skill extraction and categorization
+  - Context-aware skill matching
+  - Advanced ranking algorithm with customizable weights
+  - Comprehensive result analysis
+
+- **Document Processing**:
+
+  - Support for PDF and DOCX formats
+  - Robust text extraction
+  - Section-wise content analysis
+  - Contact information extraction
+
+- **API Endpoints**:
+
+  - File upload handling
+  - Resume parsing and analysis
+  - Skill categorization
+  - Result generation and ranking
+
+- **Security & Performance**:
+  - Session-based processing
+  - Secure file handling
+  - Asynchronous processing support
+  - Input validation and sanitization
+
+## Tech Stack
 
 - Python 3.8+
-- Flask
-- PyPDF2
-- python-docx
-- NLTK
-- spaCy
+- Flask (Web Framework)
+- spaCy (NLP)
+- PyPDF2 (PDF Processing)
+- python-docx (DOCX Processing)
+- NLTK (Natural Language Processing)
 
-## Installation
+## Getting Started
+
+### Prerequisites
+
+1. Python 3.8 or higher
+2. pip (Python package manager)
+3. Virtual environment (recommended)
+
+### Installation
 
 1. Clone the repository:
 
 ```bash
-git clone [repository-url]
-cd resume-ranking-system
+git clone <repository-url>
+cd resume-ranking-system/backend
 ```
 
-2. Create a virtual environment (recommended):
+2. Create and activate virtual environment:
 
 ```bash
 python -m venv venv
@@ -49,94 +66,122 @@ source venv/bin/activate  # Linux/Mac
 .\venv\Scripts\activate   # Windows
 ```
 
-3. Install required packages:
+3. Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Project Structure
+4. Download required NLTK data:
 
-```
-resume_ranking_system/
-├── app.py                 # Main Flask application
-├── requirements.txt       # Project dependencies
-├── skills.txt            # Skills dictionary
-├── modules/
-│   ├── document_processor.py    # PDF/DOCX processing
-│   ├── skill_extractor.py      # Skills extraction
-│   ├── resume_ranker.py        # Resume ranking logic
-│   └── report_generator.py     # HTML report generation
-├── static/
-│   └── uploads/
-│       ├── resumes/           # Upload directory for resumes
-│       └── job_descriptions/  # Upload directory for job descriptions
-└── templates/
-    ├── index.html            # Upload interface
-    └── results.html          # Results display
+```bash
+python -c "import nltk; nltk.download('punkt'); nltk.download('averaged_perceptron_tagger'); nltk.download('stopwords')"
 ```
 
-## Usage
-
-1. Start the Flask application:
+5. Start the server:
 
 ```bash
 python app.py
 ```
 
-2. Open a web browser and navigate to `http://localhost:5000`
+The API will be available at `http://localhost:5000`
 
-3. Upload files:
+## API Endpoints
 
-   - Select one or more resumes (PDF/DOCX)
-   - Upload a job description (PDF/DOCX/TXT)
-   - Click "Upload" to process
+### Upload Files
 
-4. View Results:
-   - See ranked list of candidates
-   - Review skill matches and scores
-   - Download detailed HTML report
+- **POST** `/upload`
+  - Accepts multiple resumes and a job description
+  - Returns session ID and extracted skills
+
+### Categorize Skills
+
+- **POST** `/categorize_skills`
+  - Accept skill categories (Required/Essential/Good to Have)
+  - Returns ranked results
+
+### Get Results
+
+- **GET** `/results/<session_id>`
+  - Retrieve ranking results for a session
+
+## Project Structure
+
+```
+backend/
+├── app.py                     # Main Flask application
+├── requirements.txt           # Python dependencies
+├── modules/
+│   ├── document_processor.py  # Document parsing logic
+│   ├── skill_extractor.py    # Skill extraction module
+│   ├── resume_ranker.py      # Ranking algorithm
+│   └── utils.py              # Utility functions
+├── static/
+│   └── uploads/              # File upload directory
+│       ├── resumes/
+│       └── job_descriptions/
+└── templates/                 # HTML templates for reports
+```
 
 ## How It Works
 
-1. **Document Processing**:
+1. **Document Processing**
 
-   - Extracts text from PDF/DOCX files
-   - Segments documents into relevant sections
+   - Extracts text from uploaded documents
+   - Identifies document sections
+   - Extracts contact information
 
-2. **Skills Analysis**:
+2. **Skill Analysis**
 
-   - Identifies technical skills from resumes and job descriptions
-   - Matches skills against predefined skills dictionary
-   - Calculates skill match percentages
+   - Uses NLP to identify technical skills
+   - Matches against known skill patterns
+   - Considers skill context and relevance
 
-3. **Ranking Algorithm**:
+3. **Ranking Process**
 
-   - Computes skill match score (50% weight)
-   - Calculates semantic similarity (50% weight)
-   - Generates final weighted score
-   - Ranks candidates based on overall score
+   - Weighs skills based on categories
+   - Calculates skill match scores
+   - Generates comprehensive ranking
 
-4. **Report Generation**:
-   - Creates detailed HTML reports
-   - Highlights matching and missing skills
-   - Includes contact information and scores
+4. **Result Generation**
+   - Creates detailed analysis reports
+   - Provides skill match breakdowns
+   - Includes missing skills analysis
 
-## Security Considerations
+## Development
 
-- File extensions are validated
-- Upload directory is isolated
-- Maximum file size is enforced (16MB)
-- Session IDs are validated
-- Directory traversal is prevented
+### Running Tests
+
+```bash
+python -m pytest tests/
+```
+
+### Code Style
+
+We follow PEP 8 guidelines. Run the linter:
+
+```bash
+flake8 .
+```
+
+## Environment Variables
+
+Create a `.env` file with:
+
+```env
+FLASK_ENV=development
+UPLOAD_FOLDER=static/uploads
+MAX_CONTENT_LENGTH=16777216  # 16MB in bytes
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit changes
+4. Push to the branch
+5. Submit a pull request
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- Flask for web framework
-- PyPDF2 for PDF processing
-- python-docx for DOCX handling
-- NLTK and spaCy for NLP capabilities
+MIT License - See LICENSE file for details

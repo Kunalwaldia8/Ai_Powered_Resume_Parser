@@ -1,46 +1,79 @@
-# Resume Ranking System
+# AI-Powered Resume Parser and Ranking System
 
-A Flask-based web application that analyzes and ranks resumes against job descriptions using Natural Language Processing (NLP) and machine learning techniques.
+An intelligent web application that leverages Natural Language Processing (NLP) and machine learning techniques to analyze, parse, and rank resumes against job descriptions. Built with a React frontend and Flask backend, this system provides an intuitive interface for automated resume screening and candidate ranking.
 
-## Features
+![Resume Parser Banner](./frontend/public/banner.png)
 
-- **Multi-format Support**:
-  - Resumes: PDF, DOCX
-  - Job Descriptions: PDF, DOCX, TXT
-- **Advanced Analysis**:
-  - Automated skill extraction
-  - Skills matching against job requirements
-  - Semantic similarity analysis
-  - Weighted scoring system
-- **User-Friendly Interface**:
-  - Web-based upload interface
-  - Interactive results viewing
-  - Downloadable HTML reports
-- **Security Features**:
-  - File type validation
-  - Session-based processing
-  - Directory traversal prevention
-  - File size limits (16MB)
+## 🌟 Key Features
 
-## Prerequisites
+### 📄 Document Processing
+
+- Support for multiple file formats (PDF, DOCX)
+- Smart text extraction and section identification
+- Automatic contact information extraction
+- Bulk resume processing capabilities
+
+### 🤖 AI-Powered Analysis
+
+- Intelligent skill extraction and categorization
+- Context-aware skill matching
+- Natural language understanding
+- Semantic similarity analysis
+- Machine learning based ranking algorithm
+
+### 🎯 Advanced Ranking
+
+- Customizable skill categorization (Required/Essential/Good to Have)
+- Weighted scoring system
+- Comprehensive candidate evaluation
+- Detailed skill gap analysis
+
+### 💫 Modern User Interface
+
+- Intuitive drag-and-drop file upload
+- Interactive skill categorization
+- Real-time processing feedback
+- Beautiful responsive design
+- Light/Dark theme support
+- Downloadable detailed reports
+
+## 🚀 Tech Stack
+
+### Frontend
+
+- React 18
+- Vite
+- TailwindCSS
+- Context API
+- Axios
+
+### Backend
 
 - Python 3.8+
 - Flask
+- spaCy
+- NLTK
 - PyPDF2
 - python-docx
-- NLTK
-- spaCy
 
-## Installation
+## 🛠️ Installation
 
-1. Clone the repository:
+### Prerequisites
+
+- Node.js 14+
+- Python 3.8+
+- pip
+- npm or yarn
+
+### Backend Setup
+
+1. Navigate to backend directory:
 
 ```bash
-git clone [repository-url]
-cd resume-ranking-system
+cd backend
 ```
 
-2. Create a virtual environment (recommended):
+2. Create and activate virtual environment:
 
 ```bash
 python -m venv venv
@@ -49,94 +82,139 @@ source venv/bin/activate  # Linux/Mac
 .\venv\Scripts\activate   # Windows
 ```
 
-3. Install required packages:
+3. Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Project Structure
-
-```
-resume_ranking_system/
-├── app.py                 # Main Flask application
-├── requirements.txt       # Project dependencies
-├── skills.txt            # Skills dictionary
-├── modules/
-│   ├── document_processor.py    # PDF/DOCX processing
-│   ├── skill_extractor.py      # Skills extraction
-│   ├── resume_ranker.py        # Resume ranking logic
-│   └── report_generator.py     # HTML report generation
-├── static/
-│   └── uploads/
-│       ├── resumes/           # Upload directory for resumes
-│       └── job_descriptions/  # Upload directory for job descriptions
-└── templates/
-    ├── index.html            # Upload interface
-    └── results.html          # Results display
-```
-
-## Usage
-
-1. Start the Flask application:
+4. Download NLTK data:
 
 ```bash
+python -c "import nltk; nltk.download('punkt'); nltk.download('averaged_perceptron_tagger'); nltk.download('stopwords')"
+```
+
+### Frontend Setup
+
+1. Navigate to frontend directory:
+
+```bash
+cd frontend
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+### Environment Setup
+
+1. Backend (.env):
+
+```env
+FLASK_ENV=development
+UPLOAD_FOLDER=static/uploads
+MAX_CONTENT_LENGTH=16777216
+```
+
+2. Frontend (.env):
+
+```env
+VITE_API_URL=http://localhost:5000
+```
+
+## 🚀 Running the Application
+
+1. Start the backend server:
+
+```bash
+cd backend
 python app.py
 ```
 
-2. Open a web browser and navigate to `http://localhost:5000`
+2. Start the frontend development server:
 
-3. Upload files:
+```bash
+cd frontend
+npm run dev
+```
 
-   - Select one or more resumes (PDF/DOCX)
-   - Upload a job description (PDF/DOCX/TXT)
-   - Click "Upload" to process
+3. Access the application at: `http://localhost:5173`
 
-4. View Results:
-   - See ranked list of candidates
-   - Review skill matches and scores
-   - Download detailed HTML report
+## 📂 Project Structure
 
-## How It Works
+```
+resume_ranking_system/
+├── frontend/                 # React frontend application
+│   ├── src/
+│   │   ├── components/      # React components
+│   │   ├── pages/          # Page components
+│   │   ├── context/        # React contexts
+│   │   └── utils/          # Utility functions
+│   └── public/             # Static assets
+│
+├── backend/                 # Flask backend application
+│   ├── app.py              # Main Flask application
+│   ├── modules/
+│   │   ├── document_processor.py
+│   │   ├── skill_extractor.py
+│   │   ├── resume_ranker.py
+│   │   └── utils.py
+│   ├── static/
+│   │   └── uploads/        # File upload directory
+│   └── templates/          # Report templates
+```
 
-1. **Document Processing**:
+## 🔄 How It Works
 
-   - Extracts text from PDF/DOCX files
-   - Segments documents into relevant sections
+1. **Document Upload & Processing**
 
-2. **Skills Analysis**:
+   - User uploads resumes and job description
+   - System extracts text and identifies sections
+   - Contact information is automatically parsed
 
-   - Identifies technical skills from resumes and job descriptions
-   - Matches skills against predefined skills dictionary
-   - Calculates skill match percentages
+2. **Skill Analysis**
 
-3. **Ranking Algorithm**:
+   - AI identifies technical skills and competencies
+   - Skills are matched against known patterns
+   - Context and relevance are considered
 
-   - Computes skill match score (50% weight)
-   - Calculates semantic similarity (50% weight)
-   - Generates final weighted score
-   - Ranks candidates based on overall score
+3. **Interactive Categorization**
 
-4. **Report Generation**:
-   - Creates detailed HTML reports
-   - Highlights matching and missing skills
-   - Includes contact information and scores
+   - User categorizes job requirements
+   - Skills are weighted based on importance
+   - System adapts ranking algorithm accordingly
 
-## Security Considerations
+4. **Ranking & Results**
+   - Candidates are scored based on matches
+   - Detailed analysis is generated
+   - Results are presented in intuitive UI
 
-- File extensions are validated
-- Upload directory is isolated
-- Maximum file size is enforced (16MB)
-- Session IDs are validated
-- Directory traversal is prevented
+## 🔒 Security Features
 
-## License
+- Secure file handling
+- Input validation
+- Session-based processing
+- File size limits
+- Directory traversal prevention
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+## 🤝 Contributing
 
-## Acknowledgments
+1. Fork the repository
+2. Create feature branch
+3. Commit changes
+4. Push to branch
+5. Create Pull Request
 
-- Flask for web framework
-- PyPDF2 for PDF processing
-- python-docx for DOCX handling
-- NLTK and spaCy for NLP capabilities
+## 📄 License
+
+MIT License - See [LICENSE](./LICENSE) for details
+
+## 👥 Team
+
+- [Akshat Bisht] - ML/NLP Implementation
+- [Kunal Waldia] - Backend Development
+- [Divyansh Dhaundiyal] - Frontend Development & UI/UX
