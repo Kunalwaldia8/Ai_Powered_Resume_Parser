@@ -43,23 +43,26 @@
             <div class="score-section">
               <div class="score-box">
                 <span class="score-label">Overall Score</span>
-                <span class="score-value"
-                  >{{ "%.2f"|format(resume.final_score) }}%</span
-                >
+                <span class="score-value">
+                  {{ "%.2f"|format(resume.final_score) }}%
+                </span>
               </div>
               <div class="score-details">
+                {% if resume.skill_match_score is defined %}
                 <div class="score-item">
                   <span class="score-item-label">Skill Match</span>
-                  <span class="score-item-value"
-                    >{{ "%.2f"|format(resume.skill_match_score) }}%</span
-                  >
+                  <span class="score-item-value">
+                    {{ "%.2f"|format(resume.skill_match_score) }}%
+                  </span>
                 </div>
+                {% endif %} {% if resume.semantic_score is defined %}
                 <div class="score-item">
                   <span class="score-item-label">Semantic Match</span>
-                  <span class="score-item-value"
-                    >{{ "%.2f"|format(resume.semantic_score) }}%</span
-                  >
+                  <span class="score-item-value">
+                    {{ "%.2f"|format(resume.semantic_score) }}%
+                  </span>
                 </div>
+                {% endif %}
               </div>
             </div>
 

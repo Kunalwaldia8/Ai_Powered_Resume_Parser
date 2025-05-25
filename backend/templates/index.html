@@ -67,5 +67,32 @@
     </div>
 
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Get all dropdowns
+        const dropdowns = Array.from(
+          document.querySelectorAll(".category-dropdown")
+        );
+        // When any dropdown changes
+        dropdowns.forEach((dropdown, idx) => {
+          dropdown.addEventListener("change", function () {
+            // Get all selected values except for this dropdown
+            const selected = dropdowns
+              .map((d, i) => (i !== idx ? d.value : null))
+              .filter(Boolean);
+            // For all dropdowns except this one, update options
+            dropdowns.forEach((d, i) => {
+              if (i !== idx) {
+                Array.from(d.options).forEach((opt) => {
+                  if (opt.value && opt.value !== d.value) {
+                    opt.disabled = selected.includes(opt.value);
+                  }
+                });
+              }
+            });
+          });
+        });
+      });
+    </script>
   </body>
 </html>

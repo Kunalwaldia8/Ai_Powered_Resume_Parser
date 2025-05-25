@@ -6,6 +6,7 @@ import Process from "./pages/Process";
 import About from "./pages/About";
 import Navbar from "./components/Navbar";
 import { ThemeProvider } from "./components/ThemeContext";
+import CategorizeSkillPage from "./pages/CategorizeSkillPage"; // import your new page
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/categorize" element={<CategorizeSkillPage />} />
           <Route path="/features" element={<Features />} />
           <Route path="/process" element={<Process />} />
           <Route path="/about" element={<About />} />

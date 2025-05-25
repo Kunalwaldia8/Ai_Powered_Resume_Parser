@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { ThemeContext } from "../components/ThemeContext";
+import { useNavigate } from "react-router-dom";
 
 const ResumeUpload = () => {
   const { theme } = useContext(ThemeContext);
@@ -8,6 +9,7 @@ const ResumeUpload = () => {
   const [jobDescription, setJobDescription] = useState(null);
   const [loading, setLoading] = useState(false);
   const [resultURL, setResultURL] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,7 +28,21 @@ const ResumeUpload = () => {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
-      setResultURL(res.data.redirect);
+      // Fetch skills and session info from backend API
+      const sessionId = res.data.session_id;
+      const sessionInfoRes = await axios.get(
+        `http://localhost:5000/api/session_info/${sessionId}`
+      );
+      const { jd_skills } = sessionInfoRes.data;
+
+      navigate("/categorize", {
+        state: {
+          jdSkills: jd_skills,
+          sessionInfo: {
+            session_id: sessionId,
+          },
+        },
+      });
     } catch (err) {
       console.error("Upload failed", err);
     } finally {
@@ -238,14 +254,22 @@ const ResumeUpload = () => {
             >
               Automation
             </h3>
-            <p
-              className={`text-xl transition-colors duration-300 ${
-                theme === "light" ? "text-gray-600" : "text-gray-200"
-              }`}
-            >
-              Processes multiple resumes simultaneously, extracting structured
-              data like skills, experience, and education with precision.
-            </p>
+            <div className="text-lg transition-colors duration-300 text-gray-200">
+              <ul className="text-xl space-y-4 list-disc list-inside transition-colors duration-300 text-gray-200">
+                <li>
+                  Extracts and organizes key details like skills, experience,
+                  and education from resumes with high accuracy.
+                </li>
+                <li>
+                  Utilizes NLP techniques to accurately identify entities and
+                  structure them into a JSON format.
+                </li>
+                <li>
+                  Handles different resume formats (PDF, DOCX) and layouts using
+                  a robust parsing pipeline.
+                </li>
+              </ul>
+            </div>
           </div>
           <div
             className={`p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 ${
@@ -277,14 +301,14 @@ const ResumeUpload = () => {
             >
               Fairness
             </h3>
-            <p
-              className={`text-xl transition-colors duration-300 ${
-                theme === "light" ? "text-gray-600" : "text-gray-200"
-              }`}
-            >
-              Uses NLP techniques like TF-IDF and cosine similarity to ensure
-              unbiased, objective, and consistent candidate ranking.
-            </p>
+            <div className="text-lg transition-colors duration-300 text-gray-200">
+              <ul className="text-xl space-y-4 list-disc list-inside transition-colors duration-300 text-gray-200">
+                <li>
+                  Uses NLP techniques like TF-IDF and cosine similarity to
+                  ensure unbiased, objective, and consistent candidate ranking.
+                </li>
+              </ul>
+            </div>
           </div>
           <div
             className={`p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 ${
@@ -359,16 +383,8 @@ const ResumeUpload = () => {
               >
                 Resume Parsing
               </h3>
-              <p
-                className={`text-lg transition-colors duration-300 ${
-                  theme === "light" ? "text-gray-600" : "text-gray-200"
-                }`}
-              >
-                <ul
-                  className={`text-xl space-y-4 list-disc list-inside transition-colors duration-300 ${
-                    theme === "light" ? "text-gray-600" : "text-gray-200"
-                  }`}
-                >
+              <div className="text-lg transition-colors duration-300 text-gray-200">
+                <ul className="text-xl space-y-4 list-disc list-inside transition-colors duration-300 text-gray-200">
                   <li>
                     Extracts and organizes key details like skills, experience,
                     and education from resumes with high accuracy.
@@ -382,7 +398,7 @@ const ResumeUpload = () => {
                     using a robust parsing pipeline.
                   </li>
                 </ul>
-              </p>
+              </div>
             </div>
             <div className="md:w-1/2 flex justify-center">
               <div
@@ -425,16 +441,8 @@ const ResumeUpload = () => {
               >
                 Candidate Matching
               </h3>
-              <p
-                className={`text-xl transition-colors duration-300 ${
-                  theme === "light" ? "text-gray-600" : "text-gray-200"
-                }`}
-              >
-                <ul
-                  className={`text-lg space-y-4 list-disc list-inside transition-colors duration-300 ${
-                    theme === "light" ? "text-gray-600" : "text-gray-200"
-                  }`}
-                >
+              <div className="text-lg transition-colors duration-300 text-gray-200">
+                <ul className="text-xl space-y-4 list-disc list-inside transition-colors duration-300 text-gray-200">
                   <li>
                     Matches candidates to job descriptions by comparing skills,
                     experience, and qualifications effectively.
@@ -448,7 +456,7 @@ const ResumeUpload = () => {
                     between resumes and job descriptions vary.
                   </li>
                 </ul>
-              </p>
+              </div>
             </div>
             <div className="md:w-1/2 flex justify-center">
               <div
@@ -491,11 +499,7 @@ const ResumeUpload = () => {
               >
                 Detailed Reports
               </h3>
-              <p
-                className={`text-xl transition-colors duration-300 ${
-                  theme === "light" ? "text-gray-600" : "text-gray-200"
-                }`}
-              >
+              <div className="text-xl transition-colors duration-300 text-gray-200">
                 <ul
                   className={`text-lg space-y-4 list-disc list-inside transition-colors duration-300 ${
                     theme === "light" ? "text-gray-600" : "text-gray-200"
@@ -514,7 +518,7 @@ const ResumeUpload = () => {
                     integrated into hiring dashboards.
                   </li>
                 </ul>
-              </p>
+              </div>
             </div>
             <div className="md:w-1/2 flex justify-center">
               <div
