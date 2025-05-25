@@ -6,15 +6,23 @@ import { ThemeContext } from "./ThemeContext";
 const Navbar = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <nav
-      className={`py-4 px-6 md:px-20 flex justify-between items-center sticky top-0 z-50 shadow-md transition-colors duration-300 ${
+      className={`py-4 px-6 md:px-20 flex justify-between items-center sticky top-0 z-50 shadow-md transition-colors duration-300 animate-fade-in-down ${
         theme === "light" ? "bg-white" : "bg-gray-900"
       }`}
     >
       <div className="flex items-center space-x-2">
         <NavLink
           to="/"
+          onClick={scrollToTop}
           className={`text-sm font-medium transition ${
             theme === "light"
               ? "text-gray-600 hover:text-indigo-600"
@@ -27,7 +35,8 @@ const Navbar = () => {
       <div className="flex space-x-6">
         <NavLink
           to="/"
-          className={`text-sm flex flex-col items-center font-medium transition ${
+          onClick={scrollToTop}
+          className={`text-sm flex flex-col items-center font-medium transition transform hover:scale-105 ${
             theme === "light"
               ? "text-gray-600 hover:text-indigo-600"
               : "text-gray-300 hover:text-indigo-400"
@@ -35,14 +44,15 @@ const Navbar = () => {
         >
           Home
           <hr
-            className={`w-2/4 border-none h-[1.5px] bg-gray-700 hidden ${
+            className={`w-2/4 border-none h-[1.5px] bg-gray-700 hidden transition-colors duration-300 ${
               theme === "light" ? "bg-gray-700" : "bg-gray-100"
             } `}
           />
         </NavLink>
         <NavLink
           to="/features"
-          className={`text-sm flex flex-col items-center font-medium transition ${
+          onClick={scrollToTop}
+          className={`text-sm flex flex-col items-center font-medium transition transform hover:scale-105 ${
             theme === "light"
               ? "text-gray-600 hover:text-indigo-600"
               : "text-gray-300 hover:text-indigo-400"
@@ -50,14 +60,15 @@ const Navbar = () => {
         >
           Features
           <hr
-            className={`w-2/4 border-none h-[1.5px] bg-gray-700 hidden ${
+            className={`w-2/4 border-none h-[1.5px] bg-gray-700 hidden transition-colors duration-300 ${
               theme === "light" ? "bg-gray-700" : "bg-gray-100"
             } `}
           />
         </NavLink>
         <NavLink
           to="/process"
-          className={`text-sm flex flex-col items-center font-medium transition ${
+          onClick={scrollToTop}
+          className={`text-sm flex flex-col items-center font-medium transition transform hover:scale-105 ${
             theme === "light"
               ? "text-gray-600 hover:text-indigo-600"
               : "text-gray-300 hover:text-indigo-400"
@@ -65,14 +76,15 @@ const Navbar = () => {
         >
           Process
           <hr
-            className={`w-2/4 border-none h-[1.5px] bg-gray-700 hidden ${
+            className={`w-2/4 border-none h-[1.5px] bg-gray-700 hidden transition-colors duration-300 ${
               theme === "light" ? "bg-gray-700" : "bg-gray-100"
             } `}
           />
         </NavLink>
         <NavLink
           to="/about"
-          className={`text-sm flex flex-col items-center font-medium transition ${
+          onClick={scrollToTop}
+          className={`text-sm flex flex-col items-center font-medium transition transform hover:scale-105 ${
             theme === "light"
               ? "text-gray-600 hover:text-indigo-600"
               : "text-gray-300 hover:text-indigo-400"
@@ -80,7 +92,7 @@ const Navbar = () => {
         >
           About
           <hr
-            className={`w-2/4 border-none h-[1.5px] bg-gray-700 hidden ${
+            className={`w-2/4 border-none h-[1.5px] bg-gray-700 hidden transition-colors duration-300 ${
               theme === "light" ? "bg-gray-700" : "bg-gray-100"
             } `}
           />
@@ -89,7 +101,7 @@ const Navbar = () => {
       <div className="flex space-x-4">
         <button
           onClick={toggleTheme}
-          className="text-sm font-medium transition"
+          className="text-sm font-medium transition transform hover:scale-110"
         >
           {theme === "light" ? (
             <svg

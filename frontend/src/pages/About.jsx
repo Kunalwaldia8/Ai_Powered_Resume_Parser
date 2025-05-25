@@ -25,7 +25,7 @@ const About = () => {
           About the Project
         </h1>
         <div
-          className={`p-8 rounded-xl shadow-lg max-w-5xl mx-auto transition-colors duration-300 ${
+          className={`p-8 rounded-xl shadow-lg max-w-5xl mx-auto transition-all duration-300 transform hover:scale-105 animate-slide-up ${
             theme === "light"
               ? "bg-white"
               : "bg-gray-800 border border-gray-700"
@@ -65,7 +65,7 @@ const About = () => {
           Team Members
         </h2>
         <div
-          className={`p-8 rounded-xl shadow-lg max-w-5xl mx-auto transition-colors duration-300 ${
+          className={`p-8 rounded-xl shadow-lg max-w-5xl mx-auto transition-all duration-300 transform hover:scale-105 animate-slide-up ${
             theme === "light"
               ? "bg-white"
               : "bg-gray-800 border border-gray-700"
@@ -114,7 +114,7 @@ const About = () => {
           Technologies Used
         </h2>
         <div
-          className={`p-8 rounded-xl shadow-lg max-w-5xl mx-auto transition-colors duration-300 ${
+          className={`p-8 rounded-xl shadow-lg max-w-5xl mx-auto transition-all duration-300 transform hover:scale-105 animate-slide-up ${
             theme === "light"
               ? "bg-white"
               : "bg-gray-800 border border-gray-700"
@@ -157,7 +157,7 @@ const About = () => {
           Motivation
         </h2>
         <div
-          className={`p-8 rounded-xl shadow-lg max-w-5xl mx-auto transition-colors duration-300 ${
+          className={`p-8 rounded-xl shadow-lg max-w-5xl mx-auto transition-all duration-300 transform hover:scale-105 animate-slide-up ${
             theme === "light"
               ? "bg-white"
               : "bg-gray-800 border border-gray-700"

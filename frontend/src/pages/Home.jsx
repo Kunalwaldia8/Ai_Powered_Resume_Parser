@@ -59,34 +59,34 @@ const ResumeUpload = () => {
     >
       {/* Hero Section */}
       <section
-        className={`relative pt-[150px] pb-60 py-24 px-6 md:px-20 flex flex-col md:flex-row items-center justify-between overflow-hidden transition-colors duration-300 ${
+        className={`relative pt-[150px] pb-60 py-24 px-6 md:px-20 flex flex-col md:flex-row items-center justify-between overflow-hidden transition-colors duration-300 animate-fade-in-up ${
           theme === "light" ? "bg-white" : "bg-gray-900"
         }`}
       >
         {/* Glowing Circles */}
         <div
-          className={`absolute top-[460px] md:top-[90px] sm:left-[30px] md:left-[450px] lg:left-[750px] w-[450px] h-[450px] sm:w-[450px] sm:h-[450px] md:w-[500px] md:h-[500px] rounded-full opacity-20 filter blur-2xl z-0 transition-colors duration-300 ${
+          className={`absolute top-[460px] md:top-[90px] sm:left-[30px] md:left-[450px] lg:left-[750px] w-[450px] h-[450px] sm:w-[450px] sm:h-[450px] md:w-[500px] md:h-[500px] rounded-full opacity-20 filter blur-2xl z-0 ${
             theme === "light"
               ? "bg-gradient-to-r from-cyan-500 to-indigo-400"
               : "bg-gradient-to-r from-cyan-700 to-indigo-600"
           }`}
         ></div>
         <div
-          className={`absolute top-[460px] md:top-[90px] sm:left-[100px] md:left-[600px] lg:left-[900px] w-[450px] h-[450px] sm:w-[450px] sm:h-[450px] md:w-[500px] md:h-[500px] rounded-full opacity-30 filter blur-3xl z-0 transition-colors duration-300 ${
+          className={`absolute top-[460px] md:top-[90px] sm:left-[100px] md:left-[600px] lg:left-[900px] w-[450px] h-[450px] sm:w-[450px] sm:h-[450px] md:w-[500px] md:h-[500px] rounded-full opacity-30 filter blur-3xl z-0 ${
             theme === "light"
               ? "bg-gradient-to-r from-indigo-600 to-purple-500"
               : "bg-gradient-to-r from-indigo-800 to-purple-700"
           }`}
         ></div>
         <div
-          className={`absolute top-[460px] md:top-[90px] sm:left-[150px] md:left-[650px] lg:left-[1000px] w-[450px] h-[450px] sm:w-[450px] sm:h-[450px] md:w-[500px] md:h-[500px] rounded-full opacity-20 filter blur-2xl z-0 transition-colors duration-300 ${
+          className={`absolute top-[460px] md:top-[90px] sm:left-[150px] md:left-[650px] lg:left-[1000px] w-[450px] h-[450px] sm:w-[450px] sm:h-[450px] md:w-[500px] md:h-[500px] rounded-full opacity-20 filter blur-2xl z-0 ${
             theme === "light"
               ? "bg-gradient-to-r from-purple-500 to-pink-400"
               : "bg-gradient-to-r from-purple-700 to-pink-600"
           }`}
         ></div>
 
-        <div className="md:w-3/4 text-center md:text-left z-10">
+        <div className="md:w-3/4 text-center md:text-left z-10 animate-fade-in">
           <h1
             className={`text-5xl md:text-7xl font-eina font-bold leading-tight mb-6 transition-colors duration-300 ${
               theme === "light" ? "text-indigo-800" : "text-indigo-100"
@@ -112,7 +112,7 @@ const ResumeUpload = () => {
             ranking.
           </p>
         </div>
-        <div className="md:w-1/2 mt-10 md:mt-0 z-10">
+        <div className="md:w-1/2 mt-10 md:mt-0 z-10 animate-slide-up">
           <div
             className={`p-8 rounded-xl shadow-lg w-full max-w-md mx-auto border transition-colors duration-300 ${
               theme === "light"
@@ -170,7 +170,7 @@ const ResumeUpload = () => {
               type="button"
               onClick={handleSubmit}
               disabled={loading}
-              className={`w-full text-white font-semibold py-3 rounded-md transition shadow-md ${
+              className={`w-full text-white font-semibold py-3 rounded-md transition shadow-md transform hover:scale-105 ${
                 theme === "light"
                   ? "bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700"
                   : "bg-gradient-to-r from-indigo-800 to-purple-800 hover:from-indigo-900 hover:to-purple-900"
@@ -204,7 +204,7 @@ const ResumeUpload = () => {
 
       {/* Benefits Section */}
       <section
-        className={`pb-20 px-6 md:px-20 text-center transition-colors duration-300 ${
+        className={`pb-20 px-6 md:px-20 text-center transition-colors duration-300 animate-fade-in-up ${
           theme === "light" ? "bg-white" : "bg-gray-900"
         }`}
       >
@@ -225,14 +225,14 @@ const ResumeUpload = () => {
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:mt-[70px] md:mb-[40px]">
           <div
-            className={`p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 ${
+            className={`p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-slide-up ${
               theme === "light"
                 ? "bg-white"
                 : "bg-gray-800 border border-gray-700"
             }`}
           >
             <svg
-              className={`w-12 h-12 mx-auto mb-4 transition-colors duration-300 ${
+              className={`w-12 h-12 mx-auto mb-4 transition-colors duration-300 transform hover:scale-110 ${
                 theme === "light" ? "text-indigo-600" : "text-indigo-400"
               }`}
               fill="none"
@@ -254,32 +254,24 @@ const ResumeUpload = () => {
             >
               Automation
             </h3>
-            <div className="text-lg transition-colors duration-300 text-gray-200">
-              <ul className="text-xl space-y-4 list-disc list-inside transition-colors duration-300 text-gray-200">
-                <li>
-                  Extracts and organizes key details like skills, experience,
-                  and education from resumes with high accuracy.
-                </li>
-                <li>
-                  Utilizes NLP techniques to accurately identify entities and
-                  structure them into a JSON format.
-                </li>
-                <li>
-                  Handles different resume formats (PDF, DOCX) and layouts using
-                  a robust parsing pipeline.
-                </li>
-              </ul>
-            </div>
+            <p
+              className={`text-xl transition-colors duration-300 ${
+                theme === "light" ? "text-gray-600" : "text-gray-200"
+              }`}
+            >
+              Processes multiple resumes simultaneously, extracting structured
+              data like skills, experience, and education with precision.
+            </p>
           </div>
           <div
-            className={`p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 ${
+            className={`p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-slide-up delay-100 ${
               theme === "light"
                 ? "bg-white"
                 : "bg-gray-800 border border-gray-700"
             }`}
           >
             <svg
-              className={`w-12 h-12 mx-auto mb-4 transition-colors duration-300 ${
+              className={`w-12 h-12 mx-auto mb-4 transition-colors duration-300 transform hover:scale-110 ${
                 theme === "light" ? "text-indigo-600" : "text-indigo-400"
               }`}
               fill="none"
@@ -301,24 +293,24 @@ const ResumeUpload = () => {
             >
               Fairness
             </h3>
-            <div className="text-lg transition-colors duration-300 text-gray-200">
-              <ul className="text-xl space-y-4 list-disc list-inside transition-colors duration-300 text-gray-200">
-                <li>
-                  Uses NLP techniques like TF-IDF and cosine similarity to
-                  ensure unbiased, objective, and consistent candidate ranking.
-                </li>
-              </ul>
-            </div>
+            <p
+              className={`text-xl transition-colors duration-300 ${
+                theme === "light" ? "text-gray-600" : "text-gray-200"
+              }`}
+            >
+              Uses NLP techniques like TF-IDF and cosine similarity to ensure
+              unbiased, objective, and consistent candidate ranking.
+            </p>
           </div>
           <div
-            className={`p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 ${
+            className={`p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-slide-up delay-200 ${
               theme === "light"
                 ? "bg-white"
                 : "bg-gray-800 border border-gray-700"
             }`}
           >
             <svg
-              className={`w-12 h-12 mx-auto mb-4 transition-colors duration-300 ${
+              className={`w-12 h-12 mx-auto mb-4 transition-colors duration-300 transform hover:scale-110 ${
                 theme === "light" ? "text-indigo-600" : "text-indigo-400"
               }`}
               fill="none"
@@ -354,7 +346,7 @@ const ResumeUpload = () => {
 
       {/* Features Section */}
       <section
-        className={`py-20 px-6 md:px-20 text-center transition-colors duration-300 ${
+        className={`py-20 px-6 md:px-20 text-center transition-colors duration-300 animate-fade-in-up ${
           theme === "light"
             ? "bg-gradient-to-b from-white to-gray-50"
             : "bg-gradient-to-b from-gray-900 to-gray-800"
@@ -369,7 +361,7 @@ const ResumeUpload = () => {
         </h2>
         <div className="grid grid-cols-1 gap-12 md:mt-[70px] md:mb-[40px]">
           <div
-            className={`flex flex-col md:flex-row items-center gap-8 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ${
+            className={`flex flex-col md:flex-row items-center gap-8 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 animate-slide-up ${
               theme === "light"
                 ? "bg-white"
                 : "bg-gray-800 border border-gray-700"
@@ -383,8 +375,16 @@ const ResumeUpload = () => {
               >
                 Resume Parsing
               </h3>
-              <div className="text-lg transition-colors duration-300 text-gray-200">
-                <ul className="text-xl space-y-4 list-disc list-inside transition-colors duration-300 text-gray-200">
+              <p
+                className={`text-lg transition-colors duration-300 ${
+                  theme === "light" ? "text-gray-600" : "text-gray-200"
+                }`}
+              >
+                <ul
+                  className={`text-xl space-y-4 list-disc list-inside transition-colors duration-300 ${
+                    theme === "light" ? "text-gray-600" : "text-gray-200"
+                  }`}
+                >
                   <li>
                     Extracts and organizes key details like skills, experience,
                     and education from resumes with high accuracy.
@@ -398,11 +398,11 @@ const ResumeUpload = () => {
                     using a robust parsing pipeline.
                   </li>
                 </ul>
-              </div>
+              </p>
             </div>
             <div className="md:w-1/2 flex justify-center">
               <div
-                className={`p-12 rounded-full shadow-md transition-colors duration-300 ${
+                className={`p-12 rounded-full shadow-md transition-colors duration-300 transform hover:scale-110 ${
                   theme === "light" ? "bg-indigo-50" : "bg-gray-700"
                 }`}
               >
@@ -427,7 +427,7 @@ const ResumeUpload = () => {
           </div>
 
           <div
-            className={`flex flex-col md:flex-row-reverse items-center gap-8 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ${
+            className={`flex flex-col md:flex-row-reverse items-center gap-8 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 animate-slide-up delay-100 ${
               theme === "light"
                 ? "bg-white"
                 : "bg-gray-800 border border-gray-700"
@@ -441,8 +441,16 @@ const ResumeUpload = () => {
               >
                 Candidate Matching
               </h3>
-              <div className="text-lg transition-colors duration-300 text-gray-200">
-                <ul className="text-xl space-y-4 list-disc list-inside transition-colors duration-300 text-gray-200">
+              <p
+                className={`text-lg transition-colors duration-300 ${
+                  theme === "light" ? "text-gray-600" : "text-gray-200"
+                }`}
+              >
+                <ul
+                  className={`text-xl space-y-4 list-disc list-inside transition-colors duration-300 ${
+                    theme === "light" ? "text-gray-600" : "text-gray-200"
+                  }`}
+                >
                   <li>
                     Matches candidates to job descriptions by comparing skills,
                     experience, and qualifications effectively.
@@ -456,11 +464,11 @@ const ResumeUpload = () => {
                     between resumes and job descriptions vary.
                   </li>
                 </ul>
-              </div>
+              </p>
             </div>
             <div className="md:w-1/2 flex justify-center">
               <div
-                className={`p-12 rounded-full shadow-md transition-colors duration-300 ${
+                className={`p-12 rounded-full shadow-md transition-colors duration-300 transform hover:scale-110 ${
                   theme === "light" ? "bg-indigo-50" : "bg-gray-700"
                 }`}
               >
@@ -485,7 +493,7 @@ const ResumeUpload = () => {
           </div>
 
           <div
-            className={`flex flex-col md:flex-row items-center gap-8 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ${
+            className={`flex flex-col md:flex-row items-center gap-8 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 animate-slide-up delay-200 ${
               theme === "light"
                 ? "bg-white"
                 : "bg-gray-800 border border-gray-700"
@@ -499,9 +507,13 @@ const ResumeUpload = () => {
               >
                 Detailed Reports
               </h3>
-              <div className="text-xl transition-colors duration-300 text-gray-200">
+              <p
+                className={`text-lg transition-colors duration-300 ${
+                  theme === "light" ? "text-gray-600" : "text-gray-200"
+                }`}
+              >
                 <ul
-                  className={`text-lg space-y-4 list-disc list-inside transition-colors duration-300 ${
+                  className={`text-xl space-y-4 list-disc list-inside transition-colors duration-300 ${
                     theme === "light" ? "text-gray-600" : "text-gray-200"
                   }`}
                 >
@@ -518,11 +530,11 @@ const ResumeUpload = () => {
                     integrated into hiring dashboards.
                   </li>
                 </ul>
-              </div>
+              </p>
             </div>
             <div className="md:w-1/2 flex justify-center">
               <div
-                className={`p-12 rounded-full shadow-md transition-colors duration-300 ${
+                className={`p-12 rounded-full shadow-md transition-colors duration-300 transform hover:scale-110 ${
                   theme === "light" ? "bg-indigo-50" : "bg-gray-700"
                 }`}
               >
@@ -532,14 +544,17 @@ const ResumeUpload = () => {
                   }`}
                   fill="none"
                   stroke="currentColor"
-                  viewBox="0 0 24 24"
+                  viewBox="1 0 32 32"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
-                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2V9a2 2 0 00-2-2h-2a2 2 0 00-2 2v10"
+                    d="
+          M4 18v8a2 2 0 002 2h2a2 2 0 002-2v-8a2 2 0 00-2-2H6a2 2 0 00-2 2z
+          M13 10v16a2 2 0 002 2h2a2 2 0 002-2V10a2 2 0 00-2-2h-2a2 2 0 00-2 2z
+          M22 4v22a2 2 0 002 2h2a2 2 0 002-2V4a2 2 0 00-2-2h-2a2 2 0 00-2 2z"
                   />
                 </svg>
               </div>
@@ -550,7 +565,7 @@ const ResumeUpload = () => {
 
       {/* Integrations Section */}
       <section
-        className={`pb-20 px-6 md:px-20 flex flex-col md:flex-row items-center justify-between transition-colors duration-300 ${
+        className={`pb-20 px-6 md:px-20 flex flex-col md:flex-row items-center justify-between transition-colors duration-300 animate-fade-in-up ${
           theme === "light" ? "bg-gray-50" : "bg-gray-900"
         }`}
       >
@@ -575,7 +590,7 @@ const ResumeUpload = () => {
             {["PDF", "DOCX", "JSON", "CSV", "HTML"].map((format) => (
               <div
                 key={format}
-                className={`p-3 rounded-md shadow-sm transition-colors duration-300 ${
+                className={`p-3 rounded-md shadow-sm transition-colors duration-300 transform hover:scale-105 ${
                   theme === "light"
                     ? "bg-indigo-50 hover:bg-indigo-100"
                     : "bg-gray-700 hover:bg-gray-600"
@@ -592,9 +607,9 @@ const ResumeUpload = () => {
             ))}
           </div>
         </div>
-        <div className="md:w-2/5 mt-10 md:pb-[100px] md:mt-[100px]">
+        <div className="md:w-2/5 mt-10 md:pb-[100px] md:mt-[100px] animate-slide-up">
           <div
-            className={`p-8 rounded-xl shadow-lg border md:py-[50px] transition-colors duration-300 ${
+            className={`p-8 rounded-xl shadow-lg border md:py-[50px] transition-all duration-300 transform hover:scale-105 delay-200 ${
               theme === "light"
                 ? "bg-white border-gray-100"
                 : "bg-gray-800 border-gray-700"
@@ -627,7 +642,7 @@ const ResumeUpload = () => {
 
       {/* CTA Section */}
       <section
-        className={`py-20 px-6 md:px-12 text-center text-white transition-colors duration-300 ${
+        className={`py-20 px-6 md:px-12 text-center text-white transition-colors duration-300 animate-fade-in-up ${
           theme === "light"
             ? "bg-gradient-to-r from-indigo-500 to-purple-500"
             : "bg-gradient-to-r from-indigo-800 to-purple-800"
@@ -642,11 +657,20 @@ const ResumeUpload = () => {
         </p>
         <button
           onClick={() => {
-            document
-              .getElementById("hero")
-              ?.scrollIntoView({ behavior: "smooth" });
+            const element = document.getElementById("hero");
+            if (element) {
+              const headerOffset = 64; // Adjust this to match your navbar's height in px
+              const elementPosition =
+                element.getBoundingClientRect().top + window.pageYOffset;
+              const offsetPosition = elementPosition - headerOffset;
+
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth",
+              });
+            }
           }}
-          className={`font-semibold px-8 py-3 rounded-md shadow-lg transition-colors duration-300 ${
+          className={`font-semibold px-8 py-3 rounded-md shadow-lg transition-colors duration-300 transform hover:scale-105 ${
             theme === "light"
               ? "bg-white text-indigo-600 hover:bg-gray-100"
               : "bg-gray-900 text-indigo-200 hover:bg-gray-700"
@@ -658,7 +682,7 @@ const ResumeUpload = () => {
 
       {/* Footer Section */}
       <footer
-        className={`py-8 px-6 md:px-12 text-center text-white transition-colors duration-300 ${
+        className={`py-8 px-6 md:px-12 text-center text-white transition-colors duration-300 animate-fade-in-up ${
           theme === "light" ? "bg-gray-800" : "bg-gray-950"
         }`}
       >
