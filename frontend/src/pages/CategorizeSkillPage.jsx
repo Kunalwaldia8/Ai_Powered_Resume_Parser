@@ -54,7 +54,7 @@ export default function CategorizeSkillPage() {
         className={`fixed top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full opacity-20 filter blur-2xl z-0 transition-colors duration-300 ${
           theme === "light"
             ? "bg-gradient-to-r from-cyan-400 to-blue-300"
-            : "bg-gradient-to-r from-cyan-800 to-blue-700"
+            : "bg-gradient-to-r from-indigo-800 to-purple-700"
         }`}
       ></div>
       <div

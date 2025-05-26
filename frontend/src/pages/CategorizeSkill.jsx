@@ -119,7 +119,7 @@ export default function CategorizeSkill({ skills = [], onSubmit, loading }) {
               className={`flex flex-col rounded-xl p-2 shadow-lg border-0 transition-colors duration-300 backdrop-blur-lg bg-opacity-80 min-h-0 ${
                 theme === "light"
                   ? "bg-gradient-to-br from-white via-cyan-50 to-blue-100 border border-cyan-200"
-                  : "bg-gradient-to-br from-cyan-700  via-cyan-900 to-gray-900  border-blue-800"
+                  : "bg-gradient-to-br from-gray-800  via-cyan-800 to-cyan-900  border-blue-800"
               }`}
               style={{
                 boxShadow:
@@ -151,7 +151,11 @@ export default function CategorizeSkill({ skills = [], onSubmit, loading }) {
                 />
                 <label
                   htmlFor={`select-all-${cat.key}`}
-                  className="text-xs text-white font-medium cursor-pointer"
+                  className={`text-xs  font-medium cursor-pointer ${
+                    theme === "light"
+                      ? "text-black hover:text-cyan-800"
+                      : "text-white hover:text-cyan-300"
+                  }`}
                 >
                   {allSelectedHere ? "Deselect All" : "Select All"}
                 </label>
@@ -172,7 +176,7 @@ export default function CategorizeSkill({ skills = [], onSubmit, loading }) {
                           : selectedInOther
                           ? "opacity-40 pointer-events-none"
                           : theme === "light"
-                          ? "hover:bg-cyan-100"
+                          ? "hover:bg-cyan-800"
                           : "hover:bg-cyan-900"
                       }`}
                     >
@@ -183,7 +187,13 @@ export default function CategorizeSkill({ skills = [], onSubmit, loading }) {
                         onChange={() => handleToggle(cat.key, skill)}
                         className="accent-cyan-600 scale-100"
                       />
-                      <span className="truncate text-white">{skill}</span>
+                      <span
+                        className={`truncate ${
+                          theme === "light" ? "text-gray-800" : "text-gray-200"
+                        }`}
+                      >
+                        {skill}
+                      </span>
                     </label>
                   );
                 })}
