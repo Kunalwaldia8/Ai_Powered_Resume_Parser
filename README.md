@@ -1,6 +1,6 @@
 # AI-Powered Resume Parser and Ranking System
 
-An intelligent web application that leverages Natural Language Processing (NLP) and machine learning techniques to analyze, parse, and rank resumes against job descriptions. Built with a React frontend and Flask backend, this system provides an intuitive interface for automated resume screening and candidate ranking.
+An intelligent web application that leverages Natural Language Processing (NLP) and machine learning techniques to analyze, parse, and rank resumes against job descriptions. Built with a React frontend and Flask backend, this system provides an intuitive interface for automated resume screening and candidate ranking. 
 
 ![Resume Parser Banner](./frontend/public/banner.png)
 
